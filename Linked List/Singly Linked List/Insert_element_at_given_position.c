@@ -1,5 +1,5 @@
 /*
- *  Onjective  : This Program is to insert the element at the Given/Specific Position in Singly Linked List.
+ *  Objective  : This Program is to insert the element at the Given/Specific Position in Singly Linked List.
  *  Programmer : Jatin Sharma
  */
 
@@ -123,10 +123,11 @@ void print_list()
 
     /*
     // You can Use this loop as well
+    node *temp = start;
     for (node *temp ; temp != NULL; temp = temp->next)
     {
 
-        printf("Data of node %d = %d\n", I, temp->data);
+        printf("Data of node %d = %d\n", I, temp->next->data);
         I++;
     }*/
     
@@ -136,5 +137,5 @@ void print_list()
         I++;
         start = start->next;
     }
-    printf("%d", count);
+
 }
