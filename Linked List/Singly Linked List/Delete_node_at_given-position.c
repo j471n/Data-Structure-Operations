@@ -1,5 +1,5 @@
 /*
- *  Onjective  : This Program is to insert the element at the Given/Specific Position in Singly Linked List.
+ *  Objective  : This Program is to insert the element at the Given/Specific Position in Singly Linked List.
  *  Programmer : Jatin Sharma
  */
 
@@ -45,6 +45,7 @@ void create_linked_list(int n)
 
     temp = start;
 
+    //It is creating nodes for the data.
     for (int i = 0; i < n; i++)
     {
 
@@ -80,26 +81,29 @@ void delete_element_at_given()
     printf("\nEnter the position of the node you want to perform deletion : ");
     scanf("%d", &position);
 
+    // Checking Inseted Position by user is Valid or not.
     if (position > count || position <= 0)
     {
         printf("Postion is Out of range. Data Can't Deleted !!!\n");
         return;
     }
 
-    if (start == NULL)
+    if (start == NULL)      // Checking isListEmpty
     {
         printf("List is Empty.\n");
         return;
     }
-    else if (start->next == NULL)
+    else if (start->next == NULL)       // when list only have one element.
     {
         start = NULL;
         free(start);
-        printf("Node (had one element) Deleted Successfully at Last.\n");
+        printf("Node (had one element) Deleted Successfully.\n");
         return ;
     }
 
     toDelete = start;
+
+    // Loop to the position 
     for (int i = 0; i < position; i++)
     {
         temp = toDelete;
