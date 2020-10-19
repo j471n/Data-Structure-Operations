@@ -1,5 +1,5 @@
 /*
- *  Onjective  : This Program is to insert the element at the last Position in Singly Linked List.
+ *  Objective  : This Program is to Insert the element at the last Position in Singly Linked List.
  *  Programmer : Jatin Sharma
  */
 
@@ -29,8 +29,6 @@ int main()
     scanf("%d", &n);
 
     create_linked_list(n);
-    insert_element_at_last();
-    print_list();
     return 0;
 }
 
@@ -38,36 +36,43 @@ void create_linked_list(int n)
 {
     node *array, *temp;
 
-    start = (node*)malloc(sizeof(node));
-    if (start == NULL)
-    {
-        printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again>\n");
-        return;
-    }
-
-    temp = start;
-
     for (int i = 0; i < n; i++)
     {
 
         array = (node *)malloc(sizeof(node));
         if (array == NULL)
         {
-            printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again>\n");
+            printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again.\n");
             return;
         }
 
         printf("Enter the Data for node [%d] : ", i + 1);
         scanf("%d", &array->data);
         array->next = NULL;
-        temp->next = array;
-        temp = temp->next;
+
+        if (start == NULL)
+        {
+            start = array;
+        }
+        else
+        {
+            temp = start;
+
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+
+            temp->next = array;
+        }
+
     }
 
     printf("\n");
     printf("************************************************************************\n");
     printf("********************* NODES Inserted Successfully. *********************\n");
     printf("************************************************************************\n\n");
+    insert_element_at_last();
 }
 
 void insert_element_at_last()
@@ -87,11 +92,11 @@ void insert_element_at_last()
     printf("Enter data to insert at position last : ");
     scanf("%d", &data);
     array->data = data;
+    array->next = NULL;
 
     temp = start;
     if (start == NULL)
     {
-        array->next = NULL;
         start = array;
         printf("List was Empty. So we inserted Element at first Position.\n");
         return;
@@ -103,18 +108,19 @@ void insert_element_at_last()
     }
 
     temp->next = array;
-    array->next = NULL;
 
     printf("\n************************************************************************\n");
     printf("******************* Node Inserted at last Position. *******************\n");
     printf("************************************************************************\n\n");
+    print_list();
 
 }
 
 void print_list()
 {
+    node *temp = start;
 
-    if (start == NULL)
+    if (temp == NULL)
     {
         printf("List is Empty.\n");
         return;
@@ -124,17 +130,14 @@ void print_list()
     // You can Use this loop as well
     for (node *temp ; temp != NULL; temp = temp->next)
     {
-
-        printf("Data of node %d = %d\n", I, temp->data);
+        printf("Data of node [%d] ==> %d\n", I, temp->data);
         I++;
     }
     */
 
-    node *temp = start;
-
     while (temp != NULL)
     {
-        printf("Data of node %d = %d\n", I, temp->next->data);
+        printf("Data of node [%d] ==> %d\n", I, temp->data);
         I++;
         temp = temp->next;
     }
