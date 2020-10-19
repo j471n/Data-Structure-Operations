@@ -1,7 +1,10 @@
 # Data Structure Operations
 Here You'll get DS Operations e.g. Inseting node in Linked list, Deleting Node in Linked List and many more
 
-### Linked List - [Operations]
+## Linked List - [Operations]
+
+#### Singly Linked List
+
 | Sr. No    |   Name            |   Solution    |
 |:---------:|-------------------|:-------------:|
 | 1 | Create Singly Linked List     | [C](https://github.com/j471n/Data-Structure-Operations/blob/main/Linked%20List/Singly%20Linked%20List/C/Create_Singly_Linked_List.c)        |
