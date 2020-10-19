@@ -1,5 +1,5 @@
 /*
- *  Onjective  : This Program is to insert the element at the first Position in Singly Linked List.
+ *  Objective  : This Program is to insert the element at the first Position in Singly Linked List.
  *  Programmer : Jatin Sharma
  */
 
@@ -28,8 +28,6 @@ int main()
     scanf("%d", &n);
 
     create_linked_list(n);
-    insert_element_at_first();
-    print_list();
     return 0;
 }
 
@@ -37,36 +35,44 @@ void create_linked_list(int n)
 {
     node *array, *temp;
 
-    start = (node *)malloc(sizeof(node));
-    if (start == NULL)
-    {
-        printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again>\n");
-        return;
-    }
-
-    temp = start;
-
     for (int i = 0; i < n; i++)
     {
 
         array = (node *)malloc(sizeof(node));
         if (array == NULL)
         {
-            printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again>\n");
+            printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again.\n");
             return;
         }
 
         printf("Enter the Data for node [%d] : ", i + 1);
         scanf("%d", &array->data);
         array->next = NULL;
-        temp->next = array;
-        temp = temp->next;
+
+        if (start == NULL)
+        {
+            start = array;
+        }
+        else
+        {
+            temp = start;
+
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+
+            temp->next = array;
+        }
+
+        //temp = temp->next;
     }
 
     printf("\n");
     printf("************************************************************************\n");
     printf("********************* NODES Inserted Successfully. *********************\n");
     printf("************************************************************************\n\n");
+    insert_element_at_first();
 }
 
 void insert_element_at_first()
@@ -74,7 +80,7 @@ void insert_element_at_first()
 
     node *temp;
     int data;
-    printf("Enter data to insert at postion First : ");
+    printf("Enter data to insert at position First : ");
     scanf("%d", &data);
 
     temp = (node *)malloc(sizeof(node));
@@ -84,19 +90,21 @@ void insert_element_at_first()
         return;
     }
 
-    temp = start;
     temp->data = data;
-    temp->next = start->next;
+    temp->next = start;
     start = temp;
+
     printf("\n************************************************************************\n");
     printf("******************* Node Inserted at first Position. *******************\n");
     printf("************************************************************************\n\n");
+    print_list();
 }
 
 void print_list()
 {
 
-    if (start == NULL)
+    node *temp = start;
+    if (temp == NULL)
     {
         printf("List is Empty.\n");
         return;
@@ -107,14 +115,14 @@ void print_list()
     for (node *temp ; temp != NULL; temp = temp->next)
     {
 
-        printf("Data of node %d = %d\n", I, temp->data);
+        printf("Data of node [%d] ==> %d\n", I, temp->data);
         I++;
     }
     */
-    while (start != NULL)
+    while (temp != NULL)
     {
-        printf("Data of node %d = %d\n", I, start->data);
+        printf("Data of node [%d] ==> %d\n", I, temp->data);
         I++;
-        start = start->next;
+        temp = temp->next;
     }
 }
