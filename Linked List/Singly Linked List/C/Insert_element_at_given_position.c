@@ -1,5 +1,5 @@
 /*
- *  Objective  : This Program is to insert the element at the Given/Specific Position in Singly Linked List.
+ *  Objective  : This Program is to insert the node at the Given/Specific Position in Singly Linked List.
  *  Programmer : Jatin Sharma
  */
 
@@ -10,7 +10,7 @@ int I = 1; // To Print the List using For loop as well as while loop [Global Var
 int count = 0;
 
 void create_linked_list(int n);
-void insert_element_at_given();
+void insert_node_at_given();
 void print_list();
 
 typedef struct node
@@ -36,30 +36,35 @@ void create_linked_list(int n)
 {
     node *array, *temp;
 
-    start = (node *)malloc(sizeof(node));
-    if (start == NULL)
-    {
-        printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again>\n");
-        return;
-    }
-
-    temp = start;
-
     for (int i = 0; i < n; i++)
     {
 
         array = (node *)malloc(sizeof(node));
         if (array == NULL)
         {
-            printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again>\n");
+            printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again.\n");
             return;
         }
 
         printf("Enter the Data for node [%d] : ", i + 1);
         scanf("%d", &array->data);
         array->next = NULL;
-        temp->next = array;
-        temp = temp->next;
+
+        if (start == NULL)
+        {
+            start = array;
+        }
+        else
+        {
+            temp = start;
+
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+
+            temp->next = array;
+        }
         count++;
     }
 
@@ -67,45 +72,53 @@ void create_linked_list(int n)
     printf("************************************************************************\n");
     printf("********************* NODES Inserted Successfully. *********************\n");
     printf("************************************************************************\n\n");
-    insert_element_at_given();
-
+    insert_node_at_given();
 }
 
-void insert_element_at_given()
+void insert_node_at_given()
 {
 
     node *temp, *array;
-    int data , position;
+    int position;
+
     printf("Enter the position to insert Data : ");
     scanf("%d", &position);
-    if (position > count)
+    if (position > count || position <= 0)
     {
-        printf("Postion is Out of range. Data Can't Inserted !!!\n");
-        return ;
+        printf("Position is Out of range. Data Can't Inserted. Linked List only have [%d] Node !!!\n", count);
+        return;
     }
-    
+
     array = (node *)malloc(sizeof(node));
     if (array == NULL)
     {
-        printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again\n");
-        exit;
+        printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again.\n");
+        return;
     }
-    printf("Enter data to insert at %d postion : ", position);
+    printf("Enter data to insert at [%d] position : ", position);
     scanf("%d", &array->data);
-
     temp = start;
-    for (int i = 1; i < position; i++)
-    {
-        temp = temp->next;
 
+    //Case for Inserting node If the position is 1
+    if (position == 1)
+    {
+        array->next = start;
+        start = array;
+        count++;
+    }
+    else
+    {
+
+        for (int i = 2; i < position; i++)
+        {
+            temp = temp->next;
+        }
+
+        array->next = temp->next;
+        temp->next = array;
+        count++;
     }
 
-    array->next = temp->next;
-    temp->next = array;
-    count++;
-    // printf("Node Inserted at %d position.\n", position);
-
- 
     printf("\n************************************************************************\n");
     printf("******************* Node Inserted at given Position. *******************\n");
     printf("************************************************************************\n\n");
@@ -114,8 +127,8 @@ void insert_element_at_given()
 
 void print_list()
 {
-
-    if (start == NULL)
+    node *temp = start;
+    if (temp == NULL)
     {
         printf("List is Empty.\n");
         return;
@@ -123,19 +136,17 @@ void print_list()
 
     /*
     // You can Use this loop as well
-    node *temp = start;
     for (node *temp ; temp != NULL; temp = temp->next)
     {
 
-        printf("Data of node %d = %d\n", I, temp->next->data);
+        printf("Data of node [%d] ==> %d\n", I, temp->data);
         I++;
     }*/
-    
-    while (start != NULL)
-    {
-        printf("Data of node %d = %d\n", I, start->next->data);
-        I++;
-        start = start->next;
-    }
 
+    while (temp != NULL)
+    {
+        printf("Data of node [%d] ==> %d\n", I, temp->data);
+        I++;
+        temp = temp->next;
+    }
 }
