@@ -14,3 +14,5 @@ Here You'll get DS Operations e.g. Inseting node in Linked list, Deleting Node i
 | 5 | Delete Node at First Position | [C](https://github.com/j471n/Data-Structure-Operations/blob/main/Linked%20List/Singly%20Linked%20List/C/Delete_element_at_first_position.c) |
 | 6 | Delete Node at Last Position  | [C](https://github.com/j471n/Data-Structure-Operations/blob/main/Linked%20List/Singly%20Linked%20List/C/Delete_element_at_last_position.c)  |
 | 7 | Delete Node at Given Position | [C](https://github.com/j471n/Data-Structure-Operations/blob/main/Linked%20List/Singly%20Linked%20List/C/Delete_node_at_given-position.c)    |
+| 8 | Search an Element in SLL      | [C](https://github.com/j471n/Data-Structure-Operations/blob/main/Linked%20List/Singly%20Linked%20List/C/Search_an_element_in_Linked_List.c) |
+
