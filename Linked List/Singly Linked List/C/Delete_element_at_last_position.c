@@ -1,5 +1,5 @@
 /*
- *  Objective  : This Program is to de the element at the Last Position in Singly Linked List.
+ *  Objective  : This Program is to Delete the node at the Last Position in Singly Linked List.
  *  Programmer : Jatin Sharma
  */
 
@@ -10,7 +10,7 @@
 int I = 1; // To Print the List using For loop as well as while loop [Global Variable]
 
 void create_linked_list(int n);
-void delete_element_at_last();
+void delete_node_at_last();
 void print_list();
 
 typedef struct node
@@ -23,7 +23,6 @@ node *start = NULL; // Setting Up teh Node to NULL
 
 int main()
 {
-
     int n;
     printf("Enter the Number of Total Node you want to insert : ");
     scanf("%d", &n);
@@ -36,40 +35,45 @@ void create_linked_list(int n)
 {
     node *array, *temp;
 
-    start = (node *)malloc(sizeof(node));
-    if (start == NULL)
-    {
-        printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again>\n");
-        return;
-    }
-
-    temp = start;
-
     for (int i = 0; i < n; i++)
     {
 
         array = (node *)malloc(sizeof(node));
         if (array == NULL)
         {
-            printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again>\n");
+            printf("Cannot Allocate Memory for Overflow Reason. Please Stop some task and try Again.\n");
             return;
         }
 
         printf("Enter the Data for node [%d] : ", i + 1);
         scanf("%d", &array->data);
         array->next = NULL;
-        temp->next = array;
-        temp = temp->next;
+
+        if (start == NULL)
+        {
+            start = array;
+        }
+        else
+        {
+            temp = start;
+
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+
+            temp->next = array;
+        }
     }
 
     printf("\n");
     printf("************************************************************************\n");
     printf("********************** NODE Created Successfully. **********************\n");
     printf("************************************************************************\n\n");
-    delete_element_at_last();
+    delete_node_at_last();
 }
 
-void delete_element_at_last()
+void delete_node_at_last()
 {
 
     node *toDelete, *temp;
@@ -80,28 +84,27 @@ void delete_element_at_last()
         return;
     }
 
-    else if (start->next == NULL){
+    else if (start->next == NULL)
+    {
         start = NULL;
         free(start);
-        printf("Node (had one element) Deleted Successfully at Last.\n");
+        printf("Node (had one node) Deleted Successfully at Last.\n");
         return;
     }
 
+    char choice[3];
 
-    char choice;
-
-    printf("Do you want to delete the last node of the list (y/n): ");
-    // choice = getchar();
-    scanf("%s", &choice);
-
-    if (choice == 'n')
+    printf("Do you want to delete the last node of the list (yes/no): ");
+    scanf("%s", choice);
+    
+    if (choice[0] == 'n')
     {
         printf("You choosed not to delete the last Node from the list.\n");
         print_list();
         return;
     }
 
-    else if (choice == 'y')
+    else if (choice[0] == 'y')
     {
         toDelete = start;
 
@@ -113,7 +116,7 @@ void delete_element_at_last()
 
         temp->next = NULL;
         free(toDelete);
-        
+
         printf("\n************************************************************************\n");
         printf("******************* Node Deleted at last Position. ********************\n");
         printf("************************************************************************\n\n");
@@ -129,8 +132,8 @@ void delete_element_at_last()
 
 void print_list()
 {
-
-    if (start == NULL)
+    node *temp = start;
+    if (temp == NULL)
     {
         printf("List is Empty.\n");
         return;
@@ -138,18 +141,17 @@ void print_list()
 
     /*
     // You can Use this loop as well
-    temp = start;
     for (node *temp ; temp != NULL; temp = temp->next)
     {
 
-        printf("Data of node %d = %d\n", I, temp->next->data);
+        printf("Data of node %d = %d\n", I, temp->data);
         I++;
     }
     */
-    while (start != NULL)
+    while (temp != NULL)
     {
-        printf("Data of node %d = %d\n", I, start->next->data);
+        printf("Data of node %d = %d\n", I, temp->data);
         I++;
-        start = start->next;
+        temp = temp->next;
     }
 }
