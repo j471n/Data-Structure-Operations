@@ -1,5 +1,5 @@
 /*
- *  Objective  : This Program is to insert the node at the Given/Specific Position in Singly Linked List.
+ *  Objective  : This Program is to Delete the node at the Given/Specific Position in Singly Linked List.
  *  Programmer : Jatin Sharma
  */
 
