@@ -57,7 +57,6 @@ int insert(int arr[], int size)
 
     do
     {
-
         /* Taking the value of position */
         printf("Enter the \"position\" to Insert at : ");
         scanf("%d", &position);
@@ -66,11 +65,9 @@ int insert(int arr[], int size)
         if (position > size || position < 1)
         {
             printf("Invalid Position.\n");
-            // exit(1);
         }
         else
         {
-
             printf("Enter the \"value\" to Insert : ");
             scanf("%d", &value);
 
@@ -81,8 +78,9 @@ int insert(int arr[], int size)
 
             arr[position - 1] = value;
             size++;
+            break;
         }
-    } while (position > size || position < 1);
+    } while (1);
 
     /* Returning size to main() so printArray can print that*/ 
     return size;
