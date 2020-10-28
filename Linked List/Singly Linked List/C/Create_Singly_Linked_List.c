@@ -9,7 +9,6 @@
 int I = 1; // To Print the List using For loop as well as while loop [Global Variable]
 
 void create_linked_list(int n);
-void insert_node_at_first();
 void print_list();
 
 typedef struct node
@@ -67,8 +66,7 @@ void create_linked_list(int n)
 
     }
 
-    printf("\n");
-    printf("************************************************************************\n");
+    printf("\n************************************************************************\n");
     printf("********************* NODES Created Successfully. *********************\n");
     printf("************************************************************************\n\n");
     print_list();
@@ -88,7 +86,6 @@ void print_list()
     // You can Use this loop as well
     for (node *temp ; temp != NULL; temp = temp->next)
     {
-
         printf("Data of node [%d] ==> %d\n", I, temp->data);
         I++;
     }
