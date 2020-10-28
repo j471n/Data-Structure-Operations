@@ -19,7 +19,7 @@ typedef struct node
 } node;
 
 node *start = NULL; // Setting start to NUll
-
+node *last = NULL;
 int main()
 {
 
@@ -57,8 +57,10 @@ void createLinkedList(int n)
 
         if (start == NULL)
         {
-            start = ptr;
             ptr->prev = NULL;
+            start = ptr;
+            last = ptr;
+        
         }
         else
         {
@@ -72,6 +74,7 @@ void createLinkedList(int n)
             temp->next = ptr;
             ptr->next = NULL;
             ptr->prev = temp;
+            last = ptr;
         }
     }
 
@@ -98,10 +101,10 @@ void insert(int element)
         ptr->prev = NULL;
         ptr->next = NULL;
         start = ptr;
+        last = ptr;
     }
     else
     {
-        // temp = start;
         ptr->prev = start;
         ptr->next = start;
         start->prev = ptr;
