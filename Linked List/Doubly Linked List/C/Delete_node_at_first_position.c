@@ -108,13 +108,13 @@ void delete ()
         exit(1);
     }
     node *temp = start;
-
+    int data = temp->data;
     start = temp->next;
     start->prev = NULL;
     free(temp);
 
     printf("\n************************************************************************\n");
-    printf("******************* Node Deleted at First Position. ********************\n");
+    printf("*********************** %d Deleted Successfully. ***********************\n", data);
     printf("************************************************************************\n\n");
 }
 
