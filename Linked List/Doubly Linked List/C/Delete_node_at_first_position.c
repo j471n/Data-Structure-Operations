@@ -101,17 +101,26 @@ void createLinkedList(int n)
 
 void delete ()
 {
-
+    int data;
     if (start == NULL)
     {
         printf("List is empty.\n");
         exit(1);
     }
+    else if (start->next == NULL)
+    {
+        data = start->data;
+        free(start);
+        printf("\nNode Only had one Element %d Deleted Successfully.\n", data);
+        exit(0);
+    } else {
+
     node *temp = start;
-    int data = temp->data;
+    data = temp->data;
     start = temp->next;
     start->prev = NULL;
     free(temp);
+    }
 
     printf("\n************************************************************************\n");
     printf("*********************** %d Deleted Successfully. ***********************\n", data);
