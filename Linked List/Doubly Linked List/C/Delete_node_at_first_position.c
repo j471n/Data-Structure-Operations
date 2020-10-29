@@ -30,7 +30,28 @@ int main()
     scanf("%d", &n);
 
     createLinkedList(n);
-    delete();
+
+    char choice[3];
+
+    printf("Do you want to delete the First node of the list (y/n): ");
+    scanf("%s", choice);
+
+    if (choice[0] == 'n')
+    {
+        printf("You choosed not to delete the First node of the list.\n");
+        exit(1);
+    }
+
+    else if (choice[0] == 'y')
+    {
+        delete ();
+    }
+    else
+    {
+        printf("You Entered Invalid Choice. Please Try Again.\n");
+        exit(1);
+    }
+
     printList();
     return 0;
 }
@@ -78,44 +99,23 @@ void createLinkedList(int n)
     printf("************************************************************************\n\n");
 }
 
-void delete()
+void delete ()
 {
-
-    node *temp;
 
     if (start == NULL)
     {
         printf("List is empty.\n");
         exit(1);
     }
-    char choice;
+    node *temp = start;
 
-    printf("Do you want to delete the First node of the list (y/n): ");
-    scanf("%s", &choice);
+    start = temp->next;
+    start->prev = NULL;
+    free(temp);
 
-    if (choice == 'n')
-    {
-        printf("You choosed not to delete the First node of the list.\n\n");
-        return;
-    }
-
-    else if (choice == 'y')
-    {
-        temp = start;
-        start = temp->next;
-        start->prev = NULL;
-        free(temp);
-
-        printf("\n************************************************************************\n");
-        printf("******************* Node Deleted at First Position. ********************\n");
-        printf("************************************************************************\n\n");
-        return;
-    }
-    else
-    {
-        printf("You Entered Invalid Choice. Please Try Again.\n");
-        exit(1);
-    }
+    printf("\n************************************************************************\n");
+    printf("******************* Node Deleted at First Position. ********************\n");
+    printf("************************************************************************\n\n");
 }
 
 void printList()
