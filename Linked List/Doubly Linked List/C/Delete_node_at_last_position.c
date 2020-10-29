@@ -31,12 +31,6 @@ int main()
     // Creating List
     createLinkedList(n);
 
-    // Checking List is empty or not to delete the element
-    if (start == NULL)
-    {
-        printf("List is Empty. First Insert the nodes.\n");
-        exit(1);
-    }
     char choice[3];
 
     printf("Do you want to delete the Last node of the list (y/n): ");
@@ -96,7 +90,6 @@ void createLinkedList(int n)
             }
 
             temp->next = ptr;
-            ptr->next = NULL;
             ptr->prev = temp;
             last = ptr;
         }
@@ -111,12 +104,28 @@ void pop()
 {
 
     int data;
-    node *temp = last;
+    // Checking List is empty or not to delete the element
+    if (start == NULL)
+    {
+        printf("List is Empty. First Insert the nodes.\n");
+        exit(1);
+    }
+    else if (start->next == NULL)
+    {
+        data = start->data;
+        free(start);
+        printf("\nNode Only had one Element %d Deleted Successfully.\n", data);
+        exit(0);
+    }
+    else
+    {
 
-    data = last->data;
-    last = temp->prev;
-    last->next = NULL;
-    free(temp);
+        node *temp = last;
+        data = last->data;
+        last = temp->prev;
+        last->next = NULL;
+        free(temp);
+    }
 
     printf("\n************************************************************************\n");
     printf("***********************  %d Deleted Successfully. **********************\n", data);
