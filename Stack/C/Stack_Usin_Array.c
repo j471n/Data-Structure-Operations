@@ -25,7 +25,7 @@ int main(){
     do
     {
         printf("\nChoose Option to perform operation in Stack Using an Array :\n");
-        printf("PRESS 1 FOR [PUSH]\tPRESS 2 FOR [POP]\tPRESS 3 FOR [PEEK]\tPRESS 4 FOR [PRINT-STACK]\tPRESS 5 FOR [EXIT]\n\n");
+        printf("PRESS 1 FOR [PUSH]\nPRESS 2 FOR [POP]\nPRESS 3 FOR [PEEK]\nPRESS 4 FOR [PRINT-STACK]\nPRESS 5 FOR [EXIT]\n\n");
         printf("Enter Your Choice : ");
         scanf("%d", &choice);
 
@@ -77,13 +77,13 @@ void push(){
     /* Taking Value and Adding to an Araay */
     printf("Enter the value : ");
     scanf("%d", &STACK[++TOP]);
-    printf("[%d] added Successfully.\n", STACK[TOP]);
+    printf("[%d] Inserted Successfully in Stack.\n", STACK[TOP]);
     
 }
 void pop(){
 
     isStackEmpty();
-    printf("[%d] Deleted Successfully.\n", STACK[TOP--]);
+    printf("[%d] Deleted Successfully from Stack.\n", STACK[TOP--]);
 }
 void peek(){
 
@@ -93,10 +93,10 @@ void peek(){
 void printStack(){
 
     isStackEmpty();
-    printf("Here Is the Stack -\n");
+    printf("Stack Elements are -\n");
     for (int i = TOP; i >= 0; i--)
     {
-        printf("Stack Element = [%d]\n", STACK[i]);
+        printf("==> %d ", STACK[i]);
     }
     
 }
