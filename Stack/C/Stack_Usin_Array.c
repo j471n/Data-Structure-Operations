@@ -69,8 +69,8 @@ void isStackEmpty()
 void push(){
 
     /* Checking Does Stack have Space to Enter the Element */
-    if (TOP >= SIZE){
-        printf("\n Overflow");
+    if (TOP == SIZE-1){
+        printf("Can't Insert Element, Stack is Full.\n");
         exit(1);
     }
 
