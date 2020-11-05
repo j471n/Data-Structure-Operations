@@ -16,6 +16,7 @@ void pop();
 void peek();
 void printStack();
 void isStackEmpty();
+void size();
 
 /* main() Function */
 int main(){
@@ -25,7 +26,7 @@ int main(){
     do
     {
         printf("\nChoose Option to perform operation in Stack Using an Array :\n");
-        printf("PRESS 1 FOR [PUSH]\nPRESS 2 FOR [POP]\nPRESS 3 FOR [PEEK]\nPRESS 4 FOR [PRINT-STACK]\nPRESS 5 FOR [EXIT]\n\n");
+        printf("PRESS 1 FOR [PUSH]\nPRESS 2 FOR [POP]\nPRESS 3 FOR [PEEK]\nPRESS 4 FOR [PRINT-STACK]\nPRESS 5 FOR [SIZE OF STACK]\nPRESS 6 FOR [EXIT]\n\n");
         printf("Enter Your Choice : ");
         scanf("%d", &choice);
 
@@ -45,13 +46,16 @@ int main(){
             printStack();
             break;
         case 5:
+            size();
+            break;
+        case 6:
             printf("Thanks For Using...(*_*)\n");
             break;
         default:
             printf("Invalid Choice. Try Again.\n");
             break;
         }
-    } while (choice !=5);
+    } while (choice !=6);
 
     return 0;
 }
@@ -101,3 +105,6 @@ void printStack(){
     
 }
 
+void size(){
+    printf("Stack size = [%d].\n", TOP);
+}
