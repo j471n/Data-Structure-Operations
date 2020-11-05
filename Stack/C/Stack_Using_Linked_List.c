@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int SIZE = 0;
 /* Linked List Structure */
 typedef struct node
 {
@@ -22,6 +23,7 @@ void pop();
 void peek();
 void printStack();
 void isStackEmpty();
+void size();
 
 /* main() Function */
 int main()
@@ -32,7 +34,7 @@ int main()
     do
     {
         printf("\nChoose Option to perform operation in Stack Using Linked List :\n");
-        printf("PRESS 1 FOR [PUSH]\nPRESS 2 FOR [POP]\nPRESS 3 FOR [PEEK]\nPRESS 4 FOR [PRINT-STACK]\nPRESS 5 FOR [EXIT]\n\n");
+        printf("PRESS 1 FOR [PUSH]\nPRESS 2 FOR [POP]\nPRESS 3 FOR [PEEK]\nPRESS 4 FOR [PRINT-STACK]\nPRESS 5 FOR [SIZE OF STACK]\nPRESS 6 FOR [EXIT]\n\n");
         printf("Enter Your Choice : ");
         scanf("%d", &choice);
 
@@ -52,6 +54,9 @@ int main()
             printStack();
             break;
         case 5:
+            size();
+            break;
+        case 6:
             printf("Thanks For Using...(*_*)\n");
             break;
         default:
@@ -99,6 +104,7 @@ void push()
     }
 
     printf("[%d] Inserted Successfully in Stack.\n", ptr->data);
+    SIZE++;
 }
 void pop()
 {
@@ -111,6 +117,7 @@ void pop()
     free(temp);
 
     printf("[%d] Deleted Successfully in Stack.\n", data);
+    SIZE--;
 }
 void peek()
 {
@@ -126,4 +133,9 @@ void printStack()
         printf("==> %d ", temp->data);
         temp = temp->next;
     }
+}
+
+void size()
+{
+    printf("Stack size = [%d].\n", SIZE);
 }
