@@ -64,8 +64,9 @@ void createLinkedList(int n)
         }
         else
         {
+            temp = start;
             ptr->next = start;
-            ptr->prev = temp;
+            ptr->prev = last;
             last->next = ptr;
             last = ptr;
             start->prev = last;
@@ -99,8 +100,9 @@ void lastInsert(int element)
     }
     else
     {
+        temp = start;
         ptr->next = start;
-        ptr->prev = temp;
+        ptr->prev = last;
         last->next = ptr;
         last = ptr;
         start->prev = last;
